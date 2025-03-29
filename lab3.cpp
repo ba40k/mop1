@@ -12,13 +12,13 @@ int main() {
     __asm {
         mov eax, a
 
-        ; Compute a ^ 12
+       
         mov ecx, eax; a
         imul ecx, ecx; a ^ 2
         imul ecx, eax; a ^ 3
         imul ecx, ecx; a ^ 6
         imul ecx, ecx; a ^ 12
-        mov ebx, ecx; store a ^ 12
+        mov ebx, ecx
 
         ; Compute a ^ 8
         mov ecx, eax; a
@@ -26,7 +26,7 @@ int main() {
         imul ecx, ecx; a ^ 4
         imul ecx, ecx; a ^ 8
 
-        ; Sum all parts
+        
         add ebx, ecx; a ^ 12 + a ^ 8
         add ebx, eax; +a
 
@@ -36,12 +36,20 @@ int main() {
     }
     cout << "Result: " << res1 << endl << endl;
 
+
+
     // Task 2: Find integer solutions to 2x + 3y = 50
     cout << "=== TASK 2: Finding solutions to 2x + 3y = 50 ===" << endl;
     int cnt = 0;
 
     for (int x = 1; x <= 50; x++) {
         int y = 0;
+
+
+
+
+
+        
         int valid = 0;
 
         __asm {
@@ -61,6 +69,8 @@ int main() {
             jne not_valid
 
             mov y, eax
+
+            
             mov valid, 1
 
             not_valid :
